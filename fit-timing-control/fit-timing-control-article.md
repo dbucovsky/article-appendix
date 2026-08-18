@@ -16,7 +16,7 @@ This isn't a guide for what you should do. It's a retrospective: what did buildi
 
 > **This isn't a guide for what you should do. It's a retrospective: what did building it ourselves actually cost and earn, now that it can be measured and compared against what the wider field ultimately converged on?**
 
-To check the original decision rather than just recall it fondly, this piece draws on a twelve-scenario energy analysis comparing TFX's storage layer against three widely used embedded flash filesystems (littlefs, SPIFFS, and ESP-IDF NVS), plus a survey of each system's public defect history. The full methodology and complete scenario-by-scenario results are linked at the end for anyone who wants to go deeper; what follows here is the part that matters for the argument.
+To check the original decision rather than just recall it fondly, this piece draws on a twelve-scenario energy analysis comparing TFX's storage layer against three widely used embedded flash filesystems (littlefs, SPIFFS, and ESP-IDF NVS), plus a survey of each system's public defect history. The [full methodology and complete scenario-by-scenario results](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/performance-analysis.md) are linked for anyone who wants to go deeper; what follows here is the part that matters for the argument.
 
 ## Filesystem Maturity and Risk, at a Glance
 
@@ -33,7 +33,7 @@ Before getting into performance numbers, here's how these four approaches compar
 | ESP-IDF NVS | Dec 2016 | Silent-erase and silent-non-persistence reports | Active, Espressif-owned |
 | littlefs | 2017 | Ongoing corruption and bricking reports, even recently | Active, ARM-owned, ~6.4k GitHub stars |
 
-*(Full version history, redesigns, and issue-level defect detail for every system are linked at the end of this article.)*
+*(Full [version history](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/embedded-fs-reference-brief.md) and [issue-level defect detail](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/generalist-fs-defect-history.md) for every system are linked below.)*
 
 Of the systems in this comparison, littlefs and NVS were not real options in 2016; neither one existed in any usable form yet. SPIFFS was different: it existed, was already in real production use, and was a genuinely normal option at the time, not an immature or fringe one. Its absence from serious consideration in 2016 is a question of fit, not timing, and that distinction matters for how the rest of this piece reads. FatFs, ThreadX FileX+LevelX, YAFFS2, and emFile were mature options too, each with its own strings attached (a variable, unstandardized FTL for FatFs, a commercial RTOS dependency for FileX, licensing and support models that looked very different from an internal engineering decision), but the real reason none of them were seriously evaluated for performance at the time is that all four are built around block- or chunk-sized writes meant for large, sequential files. That mismatch against small, frequent records was obvious from how they operate, before any benchmark was run, and it's exactly what the data confirms now: see the numbers under Fit below.
 
@@ -141,7 +141,7 @@ Neither of these risks disappears with your own code, but they change shape. You
 | SPIFFS | A confirmed wear-leveling defect where fully-written blocks never participate in wear leveling at all. |
 | FatFs | Seven CVEs disclosed in 2026; six remain unpatched, and the maintainer hasn't responded to coordinated disclosure. |
 
-*(Full sourcing, issue numbers, and additional examples for every system in this comparison are linked at the end of this article.)*
+*(Full sourcing, issue numbers, and additional examples for every system in this comparison are in the [complete defect history](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/generalist-fs-defect-history.md).)*
 
 ## Conclusion
 
@@ -181,9 +181,17 @@ None of this changes the central comparison; littlefs, NVS, and SPIFFS remain th
 | YAFFS2 | ~20.8x | ~46.8x |
 | FatFs + FTL | ~72.4x | ~285.0x |
 
-*(These four systems were modeled on dedicated storage regions, consistent with TFX's own architecture, rather than a shared-pool configuration. Full scenario-by-scenario source data is linked at the end of this article.)*
+*(These four systems were modeled on dedicated storage regions, consistent with TFX's own architecture, rather than a shared-pool configuration. Full scenario-by-scenario source data is in the [complete performance analysis](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/performance-analysis.md).)*
 
 ---
+
+**Further reading, full supporting data:**
+- [Embedded filesystem history and architecture](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/embedded-fs-reference-brief.md), littlefs, SPIFFS, ESP-IDF NVS, FatFs+FTL, ThreadX FileX+LevelX, YAFFS2, and SEGGER emFile
+  https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/embedded-fs-reference-brief.md
+- [Known defect history](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/generalist-fs-defect-history.md), sourced issue trackers for every comparison system
+  https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/generalist-fs-defect-history.md
+- [Full performance analysis](https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/performance-analysis.md), complete methodology and scenario-by-scenario results
+  https://github.com/dbucovsky/article-appendix/blob/main/fit-timing-control/performance-analysis.md
 
 **Acknowledgments:** Thanks to [Iván Andrés León Vásquez](https://www.linkedin.com/in/ivanleonv/) and Rodrigo Garbi, who were integral to developing TFX's EEPROM drivers, and to Pablo Gomez Martino, who helped perform the quantitative analysis and was a key editor and reviewer throughout. This article would not be what it is without their contributions.
 
