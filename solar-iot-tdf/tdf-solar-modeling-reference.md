@@ -488,8 +488,8 @@ measured results.
 With this strategy, soiling, cold-derating and clipping, and real June cloud cover all
 still in the model:
 
-June harvest: **129.7 Wh/day** (-4%, still fractionally short of the load on its own)
-Battery minimum state of charge across the year: **49%**
+June harvest: **119.2 Wh/day** (-11%, still fractionally short of the load on its own)
+Battery minimum state of charge across the year: **24%**
 Dead-battery days: **0**
 
 June alone does not fully break even under the mixed strategy. The battery survives

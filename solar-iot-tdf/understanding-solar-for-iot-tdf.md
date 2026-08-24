@@ -140,7 +140,7 @@ I do not want to blame clouds for every failed solar estimate. On a different pr
 
 A charge controller does not have to run one strategy all the time. A well-designed one can sense how much current the panel is actually able to deliver, and switch behavior accordingly: standard MPPT tracking when there is enough light to make the tracking worth its own overhead, and a lower-overhead pump-and-dump strategy, accumulating charge quietly and releasing it in efficient bursts, specifically during the hours when continuous tracking would spend more than it earns. The switch happens automatically, based on what the panel can actually deliver in that moment, not on a fixed schedule or a guess.
 
-Model that mixed strategy in place of the off-the-shelf controller, everything else unchanged, soiling, cold-shrunk capacity, real June clouds, all still in the picture, and June's harvest recovers to 129.7 Wh. Still fractionally short of the load on its own, -4 percent, but the smarter charging banks enough real surplus in the months around June that the battery carries a reserve into winter instead of arriving empty. The year's minimum state of charge lands at 49 percent. Never below half. Zero dead days.
+Model that mixed strategy in place of the off-the-shelf controller, everything else unchanged, soiling, cold-shrunk capacity, real June clouds, all still in the picture, and June's harvest recovers to 119.2 Wh. Still fractionally short of the load on its own, -11 percent, but the smarter charging banks enough real surplus in the months around June that the battery carries a reserve into winter instead of arriving empty. The year's minimum state of charge lands at 24 percent. Still safe. Zero dead days.
 
 | Stage | Harvest Energy | Excess Energy | Battery Minimum¹ | Dead days |
 |---|---|---|---|---|
@@ -150,7 +150,7 @@ Model that mixed strategy in place of the off-the-shelf controller, everything e
 | + cold-shrunk capacity, clipping enforced | 388.3 Wh | +189% | 60% | 0 |
 | + a real off-the-shelf MPPT charge controller | 359.5 Wh | +167% | 60% | 0 |
 | + real June cloud cover | 95.5 Wh | -29% | 0% | 42 |
-| + a mixed MPPT and pump-and-dump strategy | 129.7 Wh | -4% | 49% | 0 |
+| + a mixed MPPT and pump-and-dump strategy | 119.2 Wh | -11% | 24% | 0 |
 
 *¹ All Harvest Energy and Excess Energy figures below the naive row are for June, Tierra del Fuego's worst month.*
 
