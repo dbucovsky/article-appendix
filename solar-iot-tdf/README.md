@@ -1,6 +1,6 @@
 # Understanding Solar for IoT: The Tierra del Fuego Problem
 
-A solar sizing case study for a proposed LoRaWAN gateway near Tierra del Fuego, modeled against real climate data, published soiling research, cold-battery derating, and a real off-the-shelf MPPT controller's specs, showing why a panel sized double the real industry recommendation still wasn't enough without a smarter charging strategy.
+A solar sizing case study for a LoRaWAN gateway near Tierra del Fuego, modeled against real climate data, published soiling research, cold-battery derating, and a real off-the-shelf MPPT controller's specs, showing why a panel sized double the real industry recommendation still wasn't enough without a smarter charging strategy.
 
 First in a series of long-form technical articles by Damian Bucovsky, President at The Shadow
 on the Moon, examining the use of solar power in IoT solutions.
@@ -8,7 +8,7 @@ on the Moon, examining the use of solar power in IoT solutions.
 ## About this article
 
 This piece walks through the solar sizing analysis behind a remote LoRaWAN gateway
-deployment near Tierra del Fuego, in the far south of Chile. It uses the proposal as a case
+deployment near Tierra del Fuego, in the far south of Chile. It uses the design as a case
 study in why simple sizing rules, even generous ones, tend to miss the specific combination of
 factors that actually determines whether a solar-powered IoT deployment survives its worst
 month: real weather, wind-driven soiling, cold-battery derating, real charge-controller
@@ -28,7 +28,7 @@ The value of the piece is in the analysis itself.
 
 ## Status
 
-Draft.
+Final.
 
 ## Related articles
 
